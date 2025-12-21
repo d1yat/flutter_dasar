@@ -12,7 +12,16 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  String _message = 'Hello World!';
+  @override
+  void initState() {
+    super.initState();
+
+    setState(() {
+      _message = 'Hello, world!';
+    });
+  }
+
+  late String _message;
   String _buttonText = 'Click Me';
 
   void _handleButtonClick() {
@@ -22,7 +31,7 @@ class _MainAppState extends State<MainApp> {
         _message = 'Button pressed!';
       } else {
         _buttonText = 'Click Me';
-        _message = 'Hello World!';
+        _message = 'Hello, world!';
       }
     });
   }
