@@ -12,6 +12,9 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
+  late String _message;
+  String _buttonText = 'Click Me';
+
   @override
   void initState() {
     super.initState();
@@ -20,9 +23,6 @@ class _MainAppState extends State<MainApp> {
       _message = 'Hello, world!';
     });
   }
-
-  late String _message;
-  String _buttonText = 'Click Me';
 
   void _handleButtonClick() {
     setState(() {
@@ -40,6 +40,7 @@ class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Dasar',
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.deepOrange),
       home: Scaffold(
         body: Center(
           child: Column(
@@ -47,9 +48,10 @@ class _MainAppState extends State<MainApp> {
             children: [
               Text(_message, style: TextStyle(fontSize: 20)),
               const SizedBox(height: 10),
-              ElevatedButton(
+              ElevatedButton.icon(
                 onPressed: _handleButtonClick,
-                child: Text(_buttonText),
+                label: Text(_buttonText),
+                icon: Icon(Icons.mouse),
               ),
             ],
           ),
