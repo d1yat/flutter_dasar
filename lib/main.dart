@@ -28,7 +28,7 @@ class _MainAppState extends State<MainApp> {
     setState(() {
       if (_buttonText == 'Click Me') {
         _buttonText = 'Restart';
-        _message = 'Button is clicked!';
+        _message = 'Button is pressed!';
       } else {
         _buttonText = 'Click Me';
         _message = 'Hello, world!';
