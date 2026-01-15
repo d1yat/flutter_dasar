@@ -20,7 +20,7 @@ class _MainAppState extends State<MainApp> {
     super.initState();
 
     setState(() {
-      _message = 'Hello, world!';
+      _message = 'Hello, World!';
     });
   }
 
@@ -31,7 +31,7 @@ class _MainAppState extends State<MainApp> {
         _message = 'Button is clicked!';
       } else {
         _buttonText = 'Click Me';
-        _message = 'Hello, world!';
+        _message = 'Hello, World!';
       }
     });
   }
