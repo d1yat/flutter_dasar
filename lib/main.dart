@@ -1,59 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 void main() {
+  debugPaintSizeEnabled = false;
   runApp(const MainApp());
 }
 
-class MainApp extends StatefulWidget {
+class MainApp extends StatelessWidget {
   const MainApp({super.key});
-
-  @override
-  State<MainApp> createState() => _MainAppState();
-}
-
-class _MainAppState extends State<MainApp> {
-  late String _message;
-  String _buttonText = 'Click Me';
-
-  @override
-  void initState() {
-    super.initState();
-
-    setState(() {
-      _message = 'Hello, World!';
-    });
-  }
-
-  void _handleButtonClick() {
-    setState(() {
-      if (_buttonText == 'Click Me') {
-        _buttonText = 'Restart';
-        _message = 'Button is clicked!';
-      } else {
-        _buttonText = 'Click Me';
-        _message = 'Hello, World!';
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Dasar',
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.deepOrange),
-      home: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(_message, style: TextStyle(fontSize: 20)),
-              const SizedBox(height: 10),
-              ElevatedButton.icon(
-                onPressed: _handleButtonClick,
-                label: Text(_buttonText),
-                icon: Icon(Icons.mouse),
-              ),
-            ],
+      home: Row(children: [BlueBox('Satu'), BlueBox('Dua'), BlueBox('Tiga')]),
+    );
+  }
+}
+
+class BlueBox extends StatelessWidget {
+  final String text;
+
+  const BlueBox(this.text, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 100,
+      height: 100,
+      decoration: BoxDecoration(color: Colors.blue, border: BoxBorder.all()),
+      margin: EdgeInsets.only(left: 3.0),
+      child: Center(
+        child: Text(
+          text,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+            fontWeight: FontWeight.normal,
+            fontStyle: FontStyle.italic,
+            decoration: TextDecoration.none,
           ),
         ),
       ),
